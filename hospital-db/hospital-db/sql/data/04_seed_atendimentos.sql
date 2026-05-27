@@ -1,0 +1,151 @@
+-- ============================================================
+--  HOSPITAL — SEED: ATENDIMENTOS CLÍNICOS
+--  Consultas (63), internações (16), cirurgias (10), exames (37)
+--  Nota: 10 consultas graves têm motivo = NULL (emergências)
+--        10 internações têm data_saida = NULL (ainda internados)
+--  Executar após 03_seed_pacientes.sql
+-- ============================================================
+
+USE hospital;
+
+INSERT INTO consulta (data_hora, motivo, diagnostico, id_paciente, id_medico, id_quarto) VALUES
+  ('2024-05-10 09:00:00', 'Dor no peito',            'Angina estável',                    1, 1, 1),
+  ('2024-05-11 14:30:00', 'Dor no joelho',            'Artrite leve',                      2, 2, 2),
+  ('2024-05-12 10:00:00', 'Febre e tosse',            'Resfriado viral',                   3, 4, 4),
+  -- Casos graves (motivo NULL, diagnósticos críticos)
+  ('2024-06-01 02:15:00', NULL, 'Politraumatismo grave por acidente de trânsito — fratura de fêmur bilateral e TCE moderado',              4,  1, 3),
+  ('2024-06-03 18:40:00', NULL, 'Queimaduras de 3° grau em 45% da superfície corporal — região torácica e membros superiores',             7,  4, 6),
+  ('2024-06-05 23:55:00', NULL, 'Envenenamento por organofosforado — insuficiência respiratória aguda e colinérgico grave',                12, 1, 7),
+  ('2024-06-08 07:30:00', NULL, 'Politraumatismo por atropelamento — ruptura esplênica e pneumotórax hipertensivo',                        18, 2, 8),
+  ('2024-06-10 14:10:00', NULL, 'Queimaduras de 3° grau em 60% do corpo — face, tronco e membros — risco de sepse',                       25, 4, 9),
+  ('2024-06-12 03:20:00', NULL, 'Intoxicação aguda por cianeto — parada cardiorrespiratória revertida, encefalopatia anóxica',             31, 1, 10),
+  ('2024-06-14 11:45:00', NULL, 'Acidente de trânsito com motocicleta — traumatismo raquimedular cervical, risco de tetraplegia',          37, 2, 11),
+  ('2024-06-16 20:00:00', NULL, 'Queimaduras de 3° grau por explosão de gás — 55% SCQ, insuficiência renal aguda instalada',              43, 4, 12),
+  ('2024-06-18 09:35:00', NULL, 'Envenenamento por picada de serpente Bothrops — coagulopatia grave e necrose tecidual extensa',           50, 1, 13),
+  ('2024-06-20 16:50:00', NULL, 'Politraumatismo por colisão frontal — hemotórax maciço bilateral e choque hemorrágico classe IV',         56, 2, 14),
+  -- Pacientes regulares adicionais
+  ('2024-06-22 09:00:00', 'Cefaleia persistente',     'Enxaqueca com aura',                5,  1, 1),
+  ('2024-06-22 10:00:00', 'Dor abdominal',            'Gastrite aguda',                    6,  4, 4),
+  ('2024-06-22 11:00:00', 'Tontura e náusea',         'Labirintite',                       8,  1, 2),
+  ('2024-06-23 08:30:00', 'Dor lombar',               'Hérnia de disco L4-L5',             9,  2, 2),
+  ('2024-06-23 09:30:00', 'Palpitações',              'Arritmia sinusal benigna',          10,  1, 1),
+  ('2024-06-23 14:00:00', 'Tosse crônica',            'Bronquite alérgica',               11,  4, 4),
+  ('2024-06-24 10:00:00', 'Dor no ombro',             'Tendinite do manguito rotador',    13,  2, 2),
+  ('2024-06-24 11:00:00', 'Manchas na pele',          'Dermatite de contato',             14,  4, 4),
+  ('2024-06-24 15:00:00', 'Visão turva',              'Miopia progressiva',               15,  1, 1),
+  ('2024-06-25 08:00:00', 'Dor de garganta',          'Amigdalite bacteriana',            16,  4, 4),
+  ('2024-06-25 09:00:00', 'Fadiga constante',         'Hipotireoidismo',                  17,  1, 1),
+  ('2024-06-25 10:00:00', 'Ansiedade e insônia',      'Transtorno de ansiedade generalizada', 19, 4, 4),
+  ('2024-06-26 08:30:00', 'Dor no peito ao esforço',  'Angina de esforço',               20,  1, 1),
+  ('2024-06-26 09:30:00', 'Edema nos membros',        'Insuficiência venosa periférica',  21,  2, 2),
+  ('2024-06-26 14:00:00', 'Queda de cabelo',          'Alopecia androgenética',           22,  4, 4),
+  ('2024-06-27 08:00:00', 'Câimbras frequentes',      'Deficiência de magnésio',          23,  1, 1),
+  ('2024-06-27 09:00:00', 'Diabetes descompensada',   'DM2 com hiperglicemia',            24,  4, 4),
+  ('2024-06-27 10:00:00', 'Dor nos pés',              'Fascite plantar bilateral',        26,  2, 2),
+  ('2024-06-28 08:30:00', 'Hemorragia nasal',         'Epistaxe hipertensiva',            27,  1, 1),
+  ('2024-06-28 09:30:00', 'Infecção urinária',        'Cistite bacteriana aguda',         28,  4, 4),
+  ('2024-06-28 14:00:00', 'Dor articular',            'Gota articular',                   29,  2, 2),
+  ('2024-06-29 08:00:00', 'Depressão e tristeza',     'Episódio depressivo moderado',     30,  4, 4),
+  ('2024-06-29 10:00:00', 'Perda de apetite',         'Gastroenterite viral',             32,  4, 4),
+  ('2024-06-29 14:00:00', 'Pressão alta',             'Hipertensão arterial estágio 2',   33,  1, 1),
+  ('2024-06-30 08:30:00', 'Dor no joelho direito',    'Lesão de menisco medial',          34,  2, 2),
+  ('2024-06-30 09:30:00', 'Rinite alérgica',          'Rinite perene moderada',           35,  4, 4),
+  ('2024-06-30 14:00:00', 'Dor de ouvido',            'Otite média aguda',                36,  4, 4),
+  ('2024-07-01 08:00:00', 'Dificuldade para dormir',  'Insônia crônica primária',         38,  4, 4),
+  ('2024-07-01 09:00:00', 'Fraqueza muscular',        'Miosite inflamatória',             39,  2, 2),
+  ('2024-07-01 10:00:00', 'Inchaço articular',        'Artrite reumatoide ativa',         40,  2, 2),
+  ('2024-07-02 08:30:00', 'Tosse com sangue',         'Bronquiectasia',                   41,  4, 4),
+  ('2024-07-02 09:30:00', 'Dor abdominal direita',    'Colelitíase com colecistite',      42,  4, 4),
+  ('2024-07-02 14:00:00', 'Dor no quadril',           'Coxartrose bilateral',             44,  2, 2),
+  ('2024-07-03 08:00:00', 'Convulsão',                'Epilepsia focal sintomática',       45,  1, 1),
+  ('2024-07-03 09:00:00', 'Dor ao urinar',            'Prostatite aguda bacteriana',      46,  4, 4),
+  ('2024-07-03 10:00:00', 'Irregularidade menstrual', 'SOP — síndrome dos ovários policísticos', 47, 4, 4),
+  ('2024-07-04 08:30:00', 'Palpitações e sudorese',   'Hipertireoidismo',                 48,  1, 1),
+  ('2024-07-04 09:30:00', 'Dor no tornozelo',         'Entorse grau II',                  49,  2, 2),
+  ('2024-07-04 14:00:00', 'Dor de cabeça intensa',    'Hipertensão intracraniana benigna',51,  1, 1),
+  ('2024-07-05 08:00:00', 'Ganho de peso rápido',     'Hipercortisolismo (Cushing)',       52,  1, 1),
+  ('2024-07-05 09:00:00', 'Dor nas costas alta',      'Fratura vertebral por osteoporose',53,  2, 2),
+  ('2024-07-05 10:00:00', 'Falta de ar em repouso',   'Insuficiência cardíaca congestiva', 54,  1, 1),
+  ('2024-07-06 08:30:00', 'Dor pélvica crônica',      'Endometriose estágio III',         55,  4, 4),
+  ('2024-07-06 09:30:00', 'Visão dupla',              'Neurite óptica',                   57,  1, 1),
+  ('2024-07-06 14:00:00', 'Tremores nas mãos',        'Doença de Parkinson inicial',       58,  1, 1),
+  ('2024-07-07 08:00:00', 'Dor no estômago',          'Úlcera péptica sangrante',         59,  4, 4),
+  ('2024-07-07 09:00:00', 'Falta de ar intensa',      'Embolia pulmonar',                 60,  1, 1),
+  ('2024-07-07 10:00:00', 'Fraqueza num lado do corpo','AVC isquêmico em evolução',       61,  1, 1),
+  ('2024-07-08 08:30:00', 'Dor abdominal difusa',     'Peritonite por apendicite rota',   62,  4, 4),
+  ('2024-07-08 09:30:00', 'Confusão mental aguda',    'Sepse de foco urinário',           63,  4, 4);
+
+INSERT INTO internacao (data_entrada, data_saida, motivo, id_paciente, id_quarto, id_medico) VALUES
+  ('2024-05-10 11:00:00', '2024-05-13 10:00:00', 'Observação cardíaca',                    1,  1,  1),
+  -- Casos graves — sem data_saida (ainda internados)
+  ('2024-06-01 03:00:00', NULL, 'Politraumatismo grave por acidente de trânsito',           4,  3,  1),
+  ('2024-06-03 19:10:00', NULL, 'Queimaduras de 3° grau — 45% SCQ',                        7,  6,  4),
+  ('2024-06-05 00:30:00', NULL, 'Envenenamento por organofosforado',                       12,  7,  1),
+  ('2024-06-08 08:00:00', NULL, 'Politraumatismo por atropelamento — ruptura esplênica',   18,  8,  2),
+  ('2024-06-10 15:00:00', NULL, 'Queimaduras de 3° grau — 60% SCQ',                       25,  9,  4),
+  ('2024-06-12 04:00:00', NULL, 'Intoxicação por cianeto — encefalopatia anóxica',         31, 10,  1),
+  ('2024-06-14 12:30:00', NULL, 'Traumatismo raquimedular cervical',                       37, 11,  2),
+  ('2024-06-16 21:00:00', NULL, 'Queimaduras de 3° grau por explosão — 55% SCQ',          43, 12,  4),
+  ('2024-06-18 10:00:00', NULL, 'Envenenamento por Bothrops — coagulopatia grave',         50, 13,  1),
+  ('2024-06-20 17:30:00', NULL, 'Hemotórax maciço bilateral — choque hemorrágico',         56, 14,  2),
+  -- Internações regulares com alta
+  ('2024-06-22 12:00:00', '2024-06-25 10:00:00', 'Observação por arritmia',               10,  1,  1),
+  ('2024-06-24 09:00:00', '2024-06-27 08:00:00', 'Tratamento de bronquite',               11,  2,  4),
+  ('2024-06-25 14:00:00', '2024-06-28 11:00:00', 'Controle de hipertireoidismo',          48,  1,  1),
+  ('2024-07-02 10:00:00', '2024-07-05 09:00:00', 'Colecistite aguda — preparo cirúrgico', 42,  2,  4),
+  ('2024-07-07 09:30:00', '2024-07-10 08:00:00', 'AVC isquêmico — monitoramento',         61,  1,  1);
+
+INSERT INTO cirurgia (tipo, data_hora, duracao_min, status, id_paciente, id_medico, id_quarto) VALUES
+  ('Artroscopia de joelho',            '2024-06-15 08:00:00',  90,  'agendada',   2,  2, 5),
+  ('Laparotomia exploradora — esplenectomia', '2024-06-08 10:00:00', 180, 'concluida',  18, 2, 5),
+  ('Drenagem de tórax bilateral',      '2024-06-20 19:00:00', 120,  'concluida',  56, 2, 5),
+  ('Debridamento de queimaduras',      '2024-06-04 08:00:00', 210,  'concluida',   7, 4, 5),
+  ('Debridamento e enxerto cutâneo',   '2024-06-17 07:30:00', 300,  'concluida',  43, 4, 5),
+  ('Fixação cirúrgica de fêmur',       '2024-06-02 09:00:00', 150,  'concluida',   4, 2, 5),
+  ('Colecistectomia laparoscópica',    '2024-07-03 07:00:00',  75,  'concluida',  42, 4, 5),
+  ('Apendicectomia com lavagem',       '2024-07-08 11:00:00',  90,  'em_andamento',62, 4, 5),
+  ('Diálise de urgência — acesso venoso central', '2024-06-17 14:00:00', 60, 'concluida', 43, 1, 5),
+  ('Craniectomia descompressiva',      '2024-07-08 13:00:00', 240,  'agendada',   56, 1, 5);
+
+INSERT INTO exame (tipo, data_solicitacao, data_resultado, resultado, id_consulta) VALUES
+  -- Originais
+  ('Eletrocardiograma',        '2024-05-10', '2024-05-10', 'Ritmo sinusal, sem alterações agudas.',                      1),
+  ('Raio-X joelho',            '2024-05-11', '2024-05-12', 'Leve estreitamento do espaço articular.',                    2),
+  -- Casos graves — exames urgentes, alguns ainda sem resultado
+  ('TC de crânio e coluna',    '2024-06-01', '2024-06-01', 'TCE moderado, fratura de fêmur bilateral confirmada.',        4),
+  ('Gasometria arterial',      '2024-06-01', '2024-06-01', 'Acidose respiratória compensada.',                           4),
+  ('Mapeamento de queimaduras','2024-06-03', '2024-06-03', '45% SCQ — 2° e 3° graus em tórax e MMSS.',                  5),
+  ('Hemograma completo',       '2024-06-03', '2024-06-03', 'Leucocitose com desvio à esquerda.',                         5),
+  ('Colinesterase plasmática', '2024-06-05', '2024-06-05', 'Colinesterase < 10% do valor de referência.',                6),
+  ('Gasometria arterial',      '2024-06-05', '2024-06-05', 'Hipoxemia grave — PaO2 52 mmHg.',                            6),
+  ('Ultrassom abdominal',      '2024-06-08', '2024-06-08', 'Ruptura esplênica confirmada. Hemoperitônio volumoso.',       7),
+  ('Raio-X de tórax',         '2024-06-08', '2024-06-08', 'Pneumotórax hipertensivo à direita.',                        7),
+  ('Mapeamento de queimaduras','2024-06-10', '2024-06-10', '60% SCQ — 3° grau em face, tronco e MMII.',                  8),
+  ('Proteína C-reativa',       '2024-06-10', NULL,         NULL,                                                          8),
+  ('Lactato sérico',           '2024-06-12', '2024-06-12', 'Lactato 12 mmol/L — acidose lática grave.',                  9),
+  ('Eletroencefalograma',      '2024-06-12', NULL,         NULL,                                                          9),
+  ('RM de coluna cervical',    '2024-06-14', '2024-06-14', 'Lesão medular completa em C5-C6.',                           10),
+  ('Potencial evocado',        '2024-06-14', NULL,         NULL,                                                         10),
+  ('Mapeamento de queimaduras','2024-06-16', '2024-06-16', '55% SCQ — 3° grau. Creatinina 3,8 mg/dL.',                  11),
+  ('Ureia e creatinina',       '2024-06-16', '2024-06-16', 'IRA instalada — creatinina 3,8, ureia 120.',                 11),
+  ('Coagulograma',             '2024-06-18', '2024-06-18', 'TTPA > 120s. Fibrinogênio indetectável. CIVD confirmada.',   12),
+  ('Dosagem de veneno',        '2024-06-18', NULL,         NULL,                                                         12),
+  ('TC de tórax',              '2024-06-20', '2024-06-20', 'Hemotórax bilateral maciço. Desvio de mediastino.',          13),
+  ('Gasometria arterial',      '2024-06-20', '2024-06-20', 'Choque hemorrágico classe IV. BE -14.',                      13),
+  -- Regulares novos
+  ('Ressonância magnética',    '2024-06-23', '2024-06-25', 'Protrusão discal L4-L5 com compressão radicular.',           17),
+  ('Holter 24h',               '2024-06-23', '2024-06-24', 'Arritmia sinusal sem bloqueios ou pausas significativas.',   18),
+  ('Radiografia de ombro',     '2024-06-24', '2024-06-24', 'Calcificação no tendão supraespinal.',                      20),
+  ('TSH e T4 livre',           '2024-06-25', '2024-06-26', 'TSH 18,4 mUI/L. T4 livre 0,6 ng/dL. Hipotireoidismo.',     23),
+  ('Ecocardiograma',           '2024-06-26', '2024-06-27', 'FE 38%. Dilatação de VE. ICC confirmada.',                  34),
+  ('Glicemia e HbA1c',         '2024-06-27', '2024-06-27', 'Glicemia 310 mg/dL. HbA1c 11,2%. DM2 descompensado.',      25),
+  ('Urocultura',               '2024-06-28', '2024-06-30', 'E. coli > 100.000 UFC/mL. Sensível à ciprofloxacino.',      28),
+  ('Ácido úrico sérico',       '2024-06-28', '2024-06-28', 'Ácido úrico 9,8 mg/dL.',                                    29),
+  ('EEG',                      '2024-07-03', '2024-07-04', 'Foco epileptiforme temporal esquerdo.',                     31),
+  ('Ultrassom pélvico',        '2024-07-03', '2024-07-03', 'Ovários aumentados com múltiplos folículos.',                32),
+  ('TSH, T3 e T4',             '2024-07-04', '2024-07-04', 'TSH suprimido. T3 e T4 elevados. Hipertireoidismo.',        32),
+  ('Ressonância de joelho',    '2024-06-30', '2024-07-01', 'Lesão parcial do menisco medial. Sem ruptura total.',        18),
+  ('Angio-TC pulmonar',        '2024-07-07', '2024-07-07', 'Tromboembolismo pulmonar bilateral confirmado.',             39),
+  ('TC de crânio',             '2024-07-07', '2024-07-07', 'Área de hipodensidade em território da ACM esquerda.',      40),
+  ('Hemocultura',              '2024-07-08', '2024-07-09', 'Klebsiella pneumoniae — sensível a carbapenêmicos.',         40);
+
